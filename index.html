@@ -14,17 +14,7 @@
 <script src="./audio-toggle.js"></script>
 <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
 
-    <!-- Image link template to be reused. -->
-    <script id="link" type="text/html">
-      <a-entity class="link"
-        geometry="primitive: plane; height: 1; width: 1"
-        material="shader: flat; src: ${thumb}"
-        event-set__mouseenter="scale: 1.2 1.2 1"
-        event-set__mouseleave="scale: 1 1 1"
-        event-set__click="_target: #image-360; _delay: 300; material.src: ${src}"
-        proxy-event="event: click; to: #image-360; as: fade"
-        sound="on: click; src: #click-sound"></a-entity>
-    </script>
+
   </head>
   <body>
     <a-scene sound="src:
@@ -41,11 +31,11 @@
 
 
       <!-- Bibi.1 -->
-      <a-entity sound="src: #loyihiye; volume: 5; loop: false; on: click" gltf-model="#bibi" position="0 0 -4" scale="0.7 0.7 0.7" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate"></a-entity>
+      <a-entity sound="src: #loyihiye; volume: 5; loop: false; on: mouseenter" gltf-model="#bibi" position="0 0 -4" scale="0.7 0.7 0.7" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate"></a-entity>
 
 
       <!-- Bibi.2 -->
-      <a-entity sound="src: #klum; volume: 5; loop: false; on: click" gltf-model="#bibi" position="2.9 2.6 -5.3" scale="0.7 0.7 0.7" rotation="25 0 0" animation="property: position; to: 2.9 2.8 -5.3; dir: alternate; dur: 4000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -70 0; loop: true; dur: 30000; easing: linear; dir: alternate"></a-entity>
+      <a-entity sound="src: #klum; volume: 5; loop: false; on: mouseenter" gltf-model="#bibi" position="2.9 2.6 -5.3" scale="0.7 0.7 0.7" rotation="25 0 0" animation="property: position; to: 2.9 2.8 -5.3; dir: alternate; dur: 4000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -70 0; loop: true; dur: 30000; easing: linear; dir: alternate"></a-entity>
 
       <!-- 360-degree image. -->
       <a-sky id="image-360" radius="10" src="#city" rotation="0 -90 0"
