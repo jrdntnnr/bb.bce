@@ -15,11 +15,22 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "Bibi-Reduced",
+            "name" : "Bibush",
+            "rotation" : [
+                0.7071068286895752,
+                0,
+                0,
+                0.7071067094802856
+            ],
             "scale" : [
-                0.0034017395228147507,
-                0.0034017395228147507,
-                0.0034017395228147507
+                0.4574688673019409,
+                0.4574688673019409,
+                0.4574688673019409
+            ],
+            "translation" : [
+                -0.5149504542350769,
+                0,
+                0
             ]
         }
     ],
@@ -44,7 +55,7 @@
     ],
     "meshes" : [
         {
-            "name" : "Bibi-Reduced",
+            "name" : "Bibush",
             "primitives" : [
                 {
                     "attributes" : {
@@ -65,73 +76,73 @@
     ],
     "images" : [
         {
-            "mimeType" : "image/jpeg",
-            "name" : "vanilla",
-            "uri" : "vanilla.jpg"
+            "mimeType" : "image/png",
+            "name" : "bibitex2",
+            "uri" : "bibitex2.png"
         }
     ],
     "accessors" : [
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 36216,
+            "count" : 48713,
             "max" : [
-                300.6687927246094,
-                342.6710510253906,
-                125.51671600341797
+                5.630569934844971,
+                1.8467899560928345,
+                5.565070152282715
             ],
             "min" : [
-                -251.8217010498047,
-                -356.998779296875,
-                -167.90988159179688
+                -3.2086799144744873,
+                -2.8457999229431152,
+                -5.537670135498047
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 36216,
+            "count" : 48713,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
             "componentType" : 5126,
-            "count" : 36216,
+            "count" : 48713,
             "type" : "VEC2"
         },
         {
             "bufferView" : 3,
             "componentType" : 5123,
-            "count" : 36216,
+            "count" : 73305,
             "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 434592,
+            "byteLength" : 584556,
             "byteOffset" : 0
         },
         {
             "buffer" : 0,
-            "byteLength" : 434592,
-            "byteOffset" : 434592
+            "byteLength" : 584556,
+            "byteOffset" : 584556
         },
         {
             "buffer" : 0,
-            "byteLength" : 289728,
-            "byteOffset" : 869184
+            "byteLength" : 389704,
+            "byteOffset" : 1169112
         },
         {
             "buffer" : 0,
-            "byteLength" : 72432,
-            "byteOffset" : 1158912
+            "byteLength" : 146610,
+            "byteOffset" : 1558816
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 1231344,
-            "uri" : "mini-bibi.bin"
+            "byteLength" : 1705428,
+            "uri" : "bibi-low.bin"
         }
     ]
 }
