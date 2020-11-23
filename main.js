@@ -26,6 +26,25 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     };
 
+
+    AFRAME.registerComponent('audiohandler', {
+      init:function() {
+         let playing = false;
+         let audio = document.querySelector("#space");
+         this.el.addEventListener('click', () => {
+              if(!playing) {
+                  audio.play();
+               } else {
+                  audio.pause();
+                  audio.currentTime = 0;
+               }
+               playing = !playing;
+         });
+      }
+    })
+
+
+
     scene.addEventListener('loaded', function (e) {
         setTimeout(() => {
             loading.style.display = 'none';
@@ -37,6 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function (e) {
         activateSoundsForTouch();
         splash.style.display = 'none';
-        emitEvent('scene-started', ['#bibi', '#city', '#space', '#loyihiye', '#klum']);
+        emitEvent('scene-started', ['#bibi']);
     });
 });
