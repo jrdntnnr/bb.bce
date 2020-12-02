@@ -15,26 +15,19 @@
 <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
 
 
-<<<<<<< HEAD
 <body>
 
   <div id="splash">
 <div class="loading"></div>
 <div class="start-button">Start</div>
 </div>
-<<<<<<< HEAD
-=======
-  </head>
-  <body>
->>>>>>> parent of a626282... Start Screen
-=======
->>>>>>> parent of 85e47b5... start page
+
     <a-scene sound="src:
       url(./space.mp3); loop:true; autoplay: true; volume:0.1;
       positional: false">
 
       <a-assets>
-        <img id="city" crossorigin="anonymous" src="spajce.jpg">
+        <img id="spajce" crossorigin="anonymous" src="spajce.jpg">
         <a-asset-item id="bibi" src="bibi-lo.glb"></a-asset-item>
         <audio id="loyihiye" src="loyihiye.mp3"></audio>
         <audio id="klum" src="Klum.mp3"></audio>
@@ -51,13 +44,13 @@
       <a-entity sound="src: #klum; volume: 5; loop: false; on: mouseenter" gltf-model="#bibi" position="2.9 2.6 -5.3" scale="0.4 0.4 0.4s" rotation="25 0 0" animation="property: position; to: 2.9 2.8 -5.3; dir: alternate; dur: 4000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -70 0; loop: true; dur: 30000; easing: linear; dir: alternate; startEvents: scene-started"></a-entity>
 
       <!-- 360-degree image. -->
-<<<<<<< HEAD
+
       <a-sky id="image-360" radius="10" src="#city" rotation="0 -90 0"
              animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
              animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
-=======
-      <a-sky id="image-360" radius="10" src="#city" rotation="0 -90 0"></a-sky>
->>>>>>> parent of 85e47b5... start page
+
+      <a-sky id="image-360" radius="10" src="#spajce" rotation="0 -90 0"></a-sky>
+
 
       <!-- Particles. -->
       <a-entity particle-system="preset: dust; particleCount: 500; size: 0.1; opacity: 0.6; color: #f5f4b0; velocityValue: 0 0 -25" position="0 0 -5" scale="0.1 0.1 0.1" ></a-entity>
