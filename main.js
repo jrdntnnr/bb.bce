@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const activateSoundsForTouch = () => {
-    	const sounds = document.querySelectorAll('a-sound')
+    	const sounds = document.querySelectorAll('#space, #loyihiye, #klum')
         sounds.forEach((soundEl) => {
             soundEl.components.sound.playSound();
             soundEl.components.sound.stopSound();
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     AFRAME.registerComponent('audiohandler', {
       init:function() {
          let playing = false;
-         let audio = document.querySelector("#space");
+         let audio = document.querySelector("#space, #loyihiye, #klum");
          this.el.addEventListener('click', () => {
               if(!playing) {
                   audio.play();
@@ -56,6 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function (e) {
         activateSoundsForTouch();
         splash.style.display = 'none';
-        emitEvent('scene-started', ['#bibi']);
+        emitEvent('scene-started', ['a-entity']);
     });
 });

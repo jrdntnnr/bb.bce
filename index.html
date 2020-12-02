@@ -20,11 +20,12 @@ src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"
 </head>
 
 <body>
+
   <div id="splash">
 <div class="loading"></div>
 <div class="start-button">Start</div>
 </div>
-    <a-scene>
+    <a-scene src="src: #space" autoplay="true" volume="0.1" positional="false" audiohandler>
 
       <a-assets>
         <img id="spajce" src="spajce.jpg">
@@ -34,7 +35,6 @@ src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"
         <audio id="space" src="space.mp3"></audio>
       </a-assets>
 
-      <a-sound src="src: #space" autoplay="true" volume="0.1" positional="false" audiohandler></a-sound>
 
       <!-- Bibi.1 -->
       <a-entity sound="src: #loyihiye; volume: 5; loop: false; on: mouseenter" gltf-model="#bibi" position="0 0 -4" scale="0.4 0.4 0.4" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate"></a-entity>
