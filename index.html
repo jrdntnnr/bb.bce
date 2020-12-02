@@ -23,9 +23,7 @@
 <div class="start-button">Start</div>
 </div>
 
-    <a-scene sound="src:
-      url(./space.mp3); loop:true; autoplay: true; volume:0.1;
-      positional: false" class="sound">
+    <a-scene sound="src: #space; loop:true; autoplay: true; volume:0.1; positional: false; poolSize: 2">
 
       <a-assets>
         <img id="spajce" crossorigin="anonymous" src="spajce.jpg">
@@ -37,12 +35,12 @@
 
 
       <!-- Bibi.1 -->
-      <a-entity sound="src: #loyihiye; volume: 5; loop: false; on: mouseenter" gltf-model="#bibi" position="0 0 -4" scale="0.4 0.4 0.4" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate;"></a-entity>
+      <a-entity sound="src: #loyihiye; volume: 5; loop: false; on: click" gltf-model="#bibi" position="0 0 -4" scale="0.4 0.4 0.4" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate;"></a-entity>
 
 
 
       <!-- Bibi.2 -->
-      <a-entity sound="src: #klum; volume: 5; loop: false; on: mouseenter" gltf-model="#bibi" position="2.9 2.6 -5.3" scale="0.4 0.4 0.4s" rotation="25 0 0" animation="property: position; to: 2.9 2.8 -5.3; dir: alternate; dur: 4000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -70 0; loop: true; dur: 30000; easing: linear; dir: alternate;"></a-entity>
+      <a-entity sound="src: #klum; volume: 5; loop: false; on: click" gltf-model="#bibi" position="2.9 2.6 -5.3" scale="0.4 0.4 0.4s" rotation="25 0 0" animation="property: position; to: 2.9 2.8 -5.3; dir: alternate; dur: 4000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -70 0; loop: true; dur: 30000; easing: linear; dir: alternate;"></a-entity>
 
       <!-- 360-degree image. -->
 
@@ -60,10 +58,10 @@
       <a-entity camera look-controls="pointerLockEnabled:
           true">
         <a-cursor
-        cursor raycaster="far: infinity; fuse: true; fuseTimeout: 1" position="0 0 -0.3"
           geometry="primitive: ring; radiusInner: 0.003; radiusOuter: 0.005"
-          material="color: #EE6C15"></a-cursor>
+          material="color: #ff00ff"></a-cursor>
       </a-entity>
     </a-scene>
   </body>
 </html>
+<!-- cursor raycaster="far: infinity; fuse: true; fuseTimeout: 1" position="0 0 -0.3" -->

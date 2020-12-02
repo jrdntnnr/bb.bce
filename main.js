@@ -19,12 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const activateSoundsForTouch = () => {
-    	const sounds = document.querySelectorAll('.sound')
+    	const sounds = document.querySelectorAll('[sound]')
         sounds.forEach((soundEl) => {
             soundEl.components.sound.playSound();
             soundEl.components.sound.stopSound();
         })
     };
+
+
 
     scene.addEventListener('loaded', function (e) {
         setTimeout(() => {
