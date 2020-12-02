@@ -56,6 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function (e) {
         activateSoundsForTouch();
         splash.style.display = 'none';
-        emitEvent('scene-started', ['#bibi']);
+        emitEvent('scene-started', ['#bibi, a-scene, #space, #loyihiye, #klum']);
     });
 });
