@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const activateSoundsForTouch = () => {
-    	const sounds = document.querySelectorAll('#space, #loyihiye, #klum')
+    	const sounds = document.querySelectorAll('.sound')
         sounds.forEach((soundEl) => {
             soundEl.components.sound.playSound();
             soundEl.components.sound.stopSound();
@@ -37,6 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function (e) {
         activateSoundsForTouch();
         splash.style.display = 'none';
-        emitEvent('scene-started', ['#bibi', '#city', '#space', '#loyihiye', '#klum']);
+        // emitEvent('scene-started', ['#bibi', '#city', '#space', '#loyihiye', '#klum']);
     });
 });
