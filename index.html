@@ -46,12 +46,10 @@
 
     <a-scene    
     antialias="false"
-    effects=" bloom, film,  godrays, glitch,  fxaa"
+    effects=" bloom, film, fxaa"
     film="sIntensity: 0.03; nIntensity: 0.2" 
     bloom="filter: bloom!, bloom.filter, #customFilter(bloom_texture 0.3 0.6 0.5); strength: 0.5; radius:1.2"
     fxaa="true"
-    godrays="src: #pm; threshold: 0. 0.33; intensity: 2"
-    glitch="false"
     >
 
       <a-assets>
@@ -114,11 +112,6 @@
         <input type="checkbox" checked style="vertical-align: bottom;"
             onchange="document.querySelector('a-scene').setAttribute('effects', this.checked ? 'colors, outline.sobel?, #blendOutline, bloom, film,  godrays, glitch,  fxaa' : ''  )" />
         Toggle effects
-    </label>
-    <label style="font-weight: bold; color: white; text-shadow: 1px 1px black; cursor: pointer;">
-        <input type="checkbox" style="vertical-align: bottom;"
-            onchange="document.querySelector('a-scene').setAttribute('glitch', this.checked  )" />
-        Glitch
     </label>
     <label style="font-weight: bold; color: white; text-shadow: 1px 1px black; cursor: pointer;">
         <input type="checkbox" checked style="vertical-align: bottom;"
