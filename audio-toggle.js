@@ -16,7 +16,7 @@ AFRAME.registerComponent('audio-toggle', {
     el.addEventListener('click', () => {
       if (playing) {
         el.components.sound.pauseSound()
-        playing = false
+        playing = true
       } else {
         el.components.sound.playSound()
         playing = true
