@@ -11,12 +11,27 @@
     <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
-    <script src="audio-toggle.js"></script>
-    <script src="https://unpkg.com/aframe-startplay-component/dist/aframe-startplay-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-particle-system-component@1.0.9/dist/aframe-particle-system-component.min.js"></script>
     <script src="main.js"></script>
     <script src="aframe-animation-component.min.js"></script>
-
+    <script>
+    AFRAME.registerComponent('play-on-window-click', {
+      init: function () {
+        this.onClick = this.onClick.bind(this);
+      },
+      play: function () {
+        window.addEventListener('click', this.onClick);
+      },
+      pause: function () {
+        window.removeEventListener('click', this.onClick);
+      },
+      onClick: function (evt) {
+        var video = this.el.components.material.material.map.image;
+        if (!video) { return; }
+        video.play();
+      }
+    });
+    </script>
+  </head>
 <body>
 
 
@@ -36,7 +51,7 @@
         <a-asset-item id="photo" src="photo.glb"></a-asset-item>
         <a-asset-item id="pm" src="pm.glb"></a-asset-item>
         <a-asset-item id="crt" src="crt.glb"></a-asset-item>
-        <video id="vid" preload="auto" src="vid.mp4" width="100" height="100" autoplay="true" loop="true" crossorigin="anonymous" muted playsinline="" webkit-playsinline=""></video>
+        <video id="vid" preload="auto" src="vid.mp4" width="100" height="100" muted playsinline="" webkit-playsinline="" play-on-window-click autoplay="true" loop="true"></video>
         <a-asset-item id="eternal" src="eternal.glb"></a-asset-item>
         <audio id="space" src="space.mp3"></audio>
       </a-assets>
@@ -44,22 +59,21 @@
 
       <a-entity light="type: ambient; color: #FFF; intensity: 2.5"></a-entity>
       <!-- <a-entity light="type: directional; color: #FFF; intensity: 2.6" position="-0.5 1 1"></a-entity> -->
-      <a-entity sound="src: #space; loop:true; autoplay: true; volume:0.1; positional: false;" startplay></a-entity>
+      <a-entity sound="src: #space; loop:true; autoplay: true; volume:0.1; positional: false;"></a-entity>
 
       <!-- Bibi -->
       <a-entity gltf-model="#bibi" position="0 0 -4" scale="0.4 0.4 0.4" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate;"></a-entity>
 
       <!-- CRT -->
-      <a-entity gltf-model="crt.glb" material="flatShading: true" position="4.151 -0.566 -1.839" scale="2 2 2" rotation="0 -150 0"></a-entity>
+      <a-entity gltf-model="crt.glb" material="flatShading: true" position="4.151 -0.566 -1.839" scale="2 2 2" rotation="0 -150 0" animation="property: position; to: 4.151 -0.066 -1.839; dir: alternate; dur: 5000; easing: easeInOutQuad; loop: true"></a-entity>
 
-      <a-entity material="shader: flat; src: #vid" geometry="primitive: plane; width: 100; height: 100;" position="3.711 -0.01 -1.579" rotation="0 -57.34000000000001 0" scale="0.008 0.008 0.01" startplay>
-</a-entity>
+      <a-video material="shader: flat; src: #vid" geometry="primitive: plane; width: 100; height: 100;" position="3.711 -0.01 -1.579" rotation="0 -57.34000000000001 0" scale="0.008 0.008 0.01" animation="property: position; to: 3.711 0.49 -1.579; dir: alternate; dur: 5000; easing: easeInOutQuad; loop: true" play-on-window-click></a-video>
 
 
 
 
       <!-- Photo -->
-      <a-entity gltf-model="#photo" material="flatShading: true;" position="-3.7 -0.6 -4.8" scale="0.6 0.6 0.6s" rotation="0 -60 0" animation="property: position; to: -3.7 -1 -4.8; dir: alternate; dur: 3600; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -100 0; loop: true; dur: 30000; easing: linear; dir: alternate;"></a-entity>
+      <a-entity gltf-model="#photo" material="flatShading: true;" position="-3.7 -0.6 -4.8" scale="0.6 0.6 0.6s" rotation="0 -60 0" animation="property: position; to: -3.7 -1 -4.8; dir: alternate; dur: 3600; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -40 0; loop: true; dur: 30000; easing: linear; dir: alternate;"></a-entity>
 
 
 
@@ -74,9 +88,9 @@
 
       <!-- 360-degree image. -->
 
-      <a-sky id="image-360" radius="10" src="#city" rotation="0 -90 0"
+      <!-- <a-sky id="image-360" radius="10" src="#city" rotation="0 -90 0"
              animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
-             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky>
+             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky> -->
 
       <a-sky id="image-360" radius="10" src="#spajce" rotation="0 -90 0"></a-sky>
 
@@ -87,10 +101,10 @@
       <!-- Camera + cursor. -->
       <a-entity camera look-controls="pointerLockEnabled:
           true">
-      <a-cursor
+      <!-- <a-cursor
         cursor raycaster="far: infinity; fuse: true; fuseTimeout: 1; interval: 0" position="0 0 -0.3"
           geometry="primitive: ring; radiusInner: 0.003; radiusOuter: 0.005"
-          material="color: #ff00ff"></a-cursor>
+          material="color: #ff00ff"></a-cursor>-->
       </a-entity>
     </a-scene>
 
