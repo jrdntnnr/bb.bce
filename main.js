@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const activateSoundsForTouch = () => {
-    	const sounds = document.querySelectorAll('[sound]')
+    	const sounds = document.querySelectorAll('[sound]', ['#space', '#vid'])
         sounds.forEach((soundEl) => {
             soundEl.components.sound.playSound();
             soundEl.components.sound.stopSound();
@@ -39,6 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     startButton.addEventListener('click', function (e) {
         activateSoundsForTouch();
         splash.style.display = 'none';
-        emitEvent('scene-started', '[sound]', ['#space']);
+        emitEvent('scene-started', '[sound]', ['#space', '#vid']);
     });
 });
