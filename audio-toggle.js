@@ -2,7 +2,7 @@ AFRAME.registerComponent('audio-toggle', {
   schema: {
     playing: {
       type: 'boolean',
-      default: false
+      default: true
     }
   },
   update: function() {
@@ -16,7 +16,7 @@ AFRAME.registerComponent('audio-toggle', {
     el.addEventListener('click', () => {
       if (playing) {
         el.components.sound.pauseSound()
-        playing = true
+        playing = false
       } else {
         el.components.sound.playSound()
         playing = true
