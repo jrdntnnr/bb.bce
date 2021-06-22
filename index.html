@@ -2,18 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>The Eternal Bibi</title>
-    <meta name="description" content="The Eternal Bibi">
+    <title>Bibi Eternal</title>
+    <meta name="description" content="Govenmernts come and go, but Bibi is Eternal.">
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
-    <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
+    <!--<script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>-->
+    <!--<script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>-->
+    <!--<script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>-->
+    <!--<script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>-->
+    <!--<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>-->
     <script src="sprites.js"></script>
     <script src="main.js"></script>
-    <script src="aframe-animation-component.min.js"></script>
+    <!--<script src="aframe-animation-component.min.js"></script>-->
+
     <script>
     AFRAME.registerComponent('play-on-window-click', {
       init: function () {
@@ -34,7 +35,7 @@
     </script>
 
 
-    <style type="text/css">#buttonsContainer {
+<style type="text/css">#buttonsContainer {
   display: flex;
   position: absolute;
   top: 20px;
@@ -123,29 +124,30 @@
         <a-asset-item id="champs" src="champagne.glb"></a-asset-item>
         <audio id="space" src="space.mp3"></audio>
         <img id="hourglass" src="hourglass.png"/>
+        <img id="naftul" src="naftul.png"/>
       </a-assets>
 
       <a-entity web-ui-controller=""></a-entity>
       <div id="buttonsContainer"><a href="https://www.instagram.com/jrdntnnr/" target="_blank" title="Made by jrdntnnr"><img class="btnImage" src="assets/jrdntnnr.png" alt="jrdntnnr"></a><a href="https://www.instagram.com/bb.bce/" target="_blank" title="Thanks to B.B.B.C"><img class="btnImage" src="assets/bbbc.png" alt="B.B.B.C"></a></div>
 
+
+
       <a-entity light="type: ambient; color: #FFF; intensity: 2.5"></a-entity>
       <!-- <a-entity light="type: directional; color: #FFF; intensity: 2.6" position="-0.5 1 1"></a-entity> -->
       <a-entity sound="src: #space; loop:true; autoplay: true; volume:0.1; positional: false;"></a-entity>
 
+
       <!-- Bibi -->
       <a-entity gltf-model="#bibi" position="0 0 -4" scale="0.4 0.4 0.4" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate;"></a-entity>
 
+
       <!-- CRT -->
       <a-entity gltf-model="crt.glb" material="flatShading: true" position="4.151 -0.074 -1.839" scale="4 4 4" rotation="0 -150 0" animation="property: position; to: 4.151 -0.574 -1.839; dir: alternate; dur: 5000; easing: easeInOutQuad; loop: true"></a-entity>
-
       <a-video material="src: #vid" geometry="width: 100; height: 100" position="3.351 1.2 -1.339" rotation="180.21 119.99999999999999 0" scale="-0.016 -0.015 0.00001" animation="property: position; to: 3.351 .6 -1.339; dir: alternate; dur: 5000; easing: easeInOutQuad; loop: true" play-on-window-click=""></a-video>
-
-
 
 
       <!-- Photo -->
       <a-entity gltf-model="photo.glb" material="flatShading: true" position="-3.85 -0.6500617037324883 -1.59" scale="0.6 0.6 0.6" rotation="0 -29.999999999999996 0" animation="property: position; to: -3.85 -1 -1.59; dir: alternate; dur: 3600; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -10 0; loop: true; dur: 30000; easing: linear; dir: alternate"></a-entity>
-
 
 
       <!-- PM -->
@@ -153,38 +155,33 @@
 
 
       <!-- Hourglass -->
-      <a-plane position="0 0.616 5.18297" material="shader: flat; src: #hourglass; transparent: true; " spritesheet-animation="rows: 3; columns: 5; frameDuration: 0.08; loop: true;" rotation="0 180 0"></a-plane>
+      <a-plane position="0.1 0.2 5" material="shader: flat; src: #hourglass; transparent: true" spritesheet-animation="rows: 3; columns: 5; frameDuration: 0.08; lastFrameIndex: 14" rotation="0 190 0" geometry=""></a-plane>
 
+      <!-- Naftul -->
+      <<a-plane position="0.07614 1.81079 5.88876" material="shader: flat; src: #naftul; transparent: true" spritesheet-animation="columns: 62; frameDuration: 0.1;" rotation="0 190 0" geometry="" scale="4 4 2"></a-plane>
 
       <!-- Eternal -->
       <a-entity gltf-model="#eternal" position="1.326 2.301 -4.888" scale="0.4 0.4 0.4s" rotation="0 -90 -20" light="color: #a83269; intensity: 0" animation="light.intensity; from: 0; to: 1; dur: 100; dir: alternate; loop: true;"></a-entity>
-
       <a-entity light="color: #ffaded; intensity: 3.14; type: spot" position="-0.07 2 -3.62" rotation="27 0 0" animation__light="dur: 6000; easing: easeInOutQuad; from: -3 2 -3.62; loop: true; property: position; to: 15 2 -3.62"></a-entity>
 
+
       <!-- 360-degree image. -->
-
-      <!-- <a-sky id="image-360" radius="10" src="#city" rotation="0 -90 0"
-             animation__fade="property: components.material.material.color; type: color; from: #FFF; to: #000; dur: 300; startEvents: fade"
-             animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"></a-sky> -->
-
-      <a-sky id="image-360" radius="10" src="#spajce" rotation="0 -90 0"></a-sky>
+      <a-sky radius="10" src="#spajce" rotation="0 -90 0"></a-sky>
 
 
-      <!-- Particles. -->
-      <!-- <a-entity particle-system="preset: dust; particleCount: 500; size: 0.1; opacity: 0.6; color: #f5f4b0; velocityValue: 0 0 -25" position="0 0 -5" scale="0.1 0.1 0.1" ></a-entity>  -->
+
 
       <!-- Camera + cursor. -->
-      <a-entity camera look-controls="pointerLockEnabled:
-          false">
+      <a-entity camera look-controls="pointerLockEnabled:false">
       <!-- <a-cursor
         cursor raycaster="far: infinity; fuse: true; fuseTimeout: 1; interval: 0" position="0 0 -0.3"
           geometry="primitive: ring; radiusInner: 0.003; radiusOuter: 0.005"
           material="color: #ff00ff"></a-cursor>-->
       </a-entity>
+
     </a-scene>
 
 
 
   </body>
 </html>
-<!--  -->
