@@ -111,7 +111,7 @@
 
 
 
-    <a-scene>
+    <a-scene renderer="antialias: false">
 
       <a-assets>
         <img id="spajce" crossorigin="anonymous" src="spajce.jpg">
@@ -155,10 +155,13 @@
 
 
       <!-- Hourglass -->
-      <a-plane position="0.1 0.2 5" material="shader: flat; src: #hourglass; transparent: true" spritesheet-animation="rows: 3; columns: 5; frameDuration: 0.08; lastFrameIndex: 14" rotation="0 190 0" geometry=""></a-plane>
+      <a-plane position="0.09283 2.48582 5" material="shader: flat; src: #hourglass; transparent: true" spritesheet-animation="rows: 3; columns: 5; frameDuration: 0.08; lastFrameIndex: 14" rotation="0 185 0" geometry=""></a-plane>
 
       <!-- Naftul -->
-      <<a-plane position="0.07614 1.81079 5.88876" material="shader: flat; src: #naftul; transparent: true" spritesheet-animation="columns: 62; frameDuration: 0.1;" rotation="0 190 0" geometry="" scale="4 4 2"></a-plane>
+      <a-plane position="0.12136 0.01916 5.19641" material="shader: flat; src: #naftul; transparent: true" spritesheet-animation="rows: 2; columns: 6; frameDuration: 0.1; lastFrameIndex: 11" rotation="0 185 0" geometry="" scale="4 4 2"></a-plane>
+
+      <!-- DELETING -->
+      <a-entity text="font: monoid; value: DELETING..." position="-1.85634 1.36 3.76661" rotation="0 185 0" scale="5 5 1"></a-entity>
 
       <!-- Eternal -->
       <a-entity gltf-model="#eternal" position="1.326 2.301 -4.888" scale="0.4 0.4 0.4s" rotation="0 -90 -20" light="color: #a83269; intensity: 0" animation="light.intensity; from: 0; to: 1; dur: 100; dir: alternate; loop: true;"></a-entity>
