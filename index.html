@@ -47,10 +47,10 @@
     <!--<script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>-->
     <!--<script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>-->
     <!--<script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>-->
-    <!--<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>-->
     <script src="sprites.js"></script>
     <script src="main.js"></script>
     <!--<script src="aframe-animation-component.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@fb96ab2/dist/aframe-extras.min.js"></script>
 
     <script>
     AFRAME.registerComponent('play-on-window-click', {
@@ -148,20 +148,25 @@
 
 
 
-    <a-scene renderer="antialias: false">
+    <a-scene renderer="antialias: true;
+                   colorManagement: true;
+                   sortObjects: true;
+                   physicallyCorrectLights: true;">
 
       <a-assets>
-        <img id="spajce" crossorigin="anonymous" src="spajce.jpg">
-        <a-asset-item id="bibi" src="bibi-lo.glb"></a-asset-item>
-        <a-asset-item id="photo" src="photo.glb"></a-asset-item>
+        <img id="spajce" crossorigin="anonymous" src="skye.jpg">
+        <a-asset-item id="bibi" src="statue.glb"></a-asset-item>
+        <a-asset-item id="temple" src="temple.glb"></a-asset-item>
+        <a-asset-item id="photo" src="photo2.glb"></a-asset-item>
         <a-asset-item id="pm" src="pm.glb"></a-asset-item>
         <a-asset-item id="crt" src="crt.glb"></a-asset-item>
-        <video id="vid" preload="auto" src="vid.mp4" width="100" height="100" muted playsinline="" webkit-playsinline="" play-on-window-click autoplay="true" loop="true"></video>
+        <a-asset-item id="flag" src="flag.glb"></a-asset-item>
+        <video id="vid" preload="auto" src="vid2.mp4" width="100" height="100" muted playsinline="" webkit-playsinline="" play-on-window-click autoplay="true" loop="true"></video>
         <a-asset-item id="eternal" src="eternal.glb"></a-asset-item>
         <a-asset-item id="champs" src="champagne.glb"></a-asset-item>
         <audio id="space" src="space.mp3"></audio>
         <img id="hourglass" src="hourglass.png"/>
-        <img id="naftul" src="naftul.png"/>
+        <img id="naftul" src="bagatz.png"/>
       </a-assets>
 
       <a-entity web-ui-controller=""></a-entity>
@@ -175,8 +180,8 @@
 
 
       <!-- Bibi -->
-      <a-entity gltf-model="#bibi" position="0 0 -4" scale="0.4 0.4 0.4" rotation="0 -30 0" animation="property: position; to: 0 0.3 -4; dir: alternate; dur: 3000; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 50 0; loop: true; dur: 20000; easing: linear; dir: alternate;"></a-entity>
-
+      <a-entity gltf-model="#bibi" position="0.004 -4.001 -0.091" scale="0.4 0.4 0.4" rotation="0 0 0" ></a-entity>
+      <a-entity gltf-model="#temple" position="0 -4 0" scale="0.4 0.4 0.4" rotation="0 0 0" ></a-entity>
 
       <!-- CRT -->
       <a-entity gltf-model="crt.glb" material="flatShading: true" position="4.151 -0.074 -1.839" scale="4 4 4" rotation="0 -150 0" animation="property: position; to: 4.151 -0.574 -1.839; dir: alternate; dur: 5000; easing: easeInOutQuad; loop: true"></a-entity>
@@ -184,11 +189,11 @@
 
 
       <!-- Photo -->
-      <a-entity gltf-model="photo.glb" material="flatShading: true" position="-3.85 -0.6500617037324883 -1.59" scale="0.6 0.6 0.6" rotation="0 -29.999999999999996 0" animation="property: position; to: -3.85 -1 -1.59; dir: alternate; dur: 3600; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -10 0; loop: true; dur: 30000; easing: linear; dir: alternate"></a-entity>
+      <a-entity gltf-model="#photo" material="flatShading: true" position="-3.85 -0.6500617037324883 -1.59" scale="0.6 0.6 0.6" rotation="0 -29.999999999999996 0" animation="property: position; to: -3.85 -1 -1.59; dir: alternate; dur: 3600; easing: easeInOutQuad; loop: true" animation__2="property: rotation; to: 0 -10 0; loop: true; dur: 30000; easing: linear; dir: alternate"></a-entity>
 
 
       <!-- PM -->
-      <a-entity gltf-model="#pm" position="1.326 3.221 -4.888" scale="0.4 0.4 0.4s" rotation="0 -90 -20"></a-entity>
+      <!-- <a-entity gltf-model="#pm" position="1.326 5 -4.888" scale="0.4 0.4 0.4s" rotation="0 -90 -20"></a-entity> -->
 
 
       <!-- Hourglass -->
@@ -201,12 +206,14 @@
       <a-entity text="font: monoid; value: DELETING..." position="-1.85634 1.36 3.76661" rotation="0 185 0" scale="5 5 1"></a-entity>
 
       <!-- Eternal -->
-      <a-entity gltf-model="#eternal" position="1.326 2.301 -4.888" scale="0.4 0.4 0.4s" rotation="0 -90 -20" light="color: #a83269; intensity: 0" animation="light.intensity; from: 0; to: 1; dur: 100; dir: alternate; loop: true;"></a-entity>
-      <a-entity light="color: #ffaded; intensity: 3.14; type: spot" position="-0.07 2 -3.62" rotation="27 0 0" animation__light="dur: 6000; easing: easeInOutQuad; from: -3 2 -3.62; loop: true; property: position; to: 15 2 -3.62"></a-entity>
+      <!-- <a-entity gltf-model="#eternal" position="1.326 4 -4.888" scale="0.4 0.4 0.4" rotation="0 -90 -20" light="color: #a83269; intensity: 0" animation="light.intensity; from: 0; to: 1; dur: 100; dir: alternate; loop: true;"></a-entity> -->
+      <a-entity gltf-model="#flag" position="-12.35 12.097 -14.7" scale="2 2 2" rotation="0 0 0" animation-mixer></a-entity>
+      <a-entity gltf-model="#flag" position="18.409 12.097 -14.7" scale="2 2 2" rotation="0 0 0" animation-mixer></a-entity>
+      <!-- <a-entity light="color: #ffaded; intensity: 3.14; type: spot" position="-0.07 2 -3.62" rotation="27 0 0" animation__light="dur: 6000; easing: easeInOutQuad; from: -3 2 -3.62; loop: true; property: position; to: 15 2 -3.62"></a-entity> -->
 
 
       <!-- 360-degree image. -->
-      <a-sky radius="10" src="#spajce" rotation="0 -90 0"></a-sky>
+      <a-sky radius="10" src="#spajce" scale="10 10 10s" rotation="0 -90 0"></a-sky>
 
 
 
