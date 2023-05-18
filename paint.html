@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <!-- Primary Meta Tags -->
+<title>Bibi Paint</title>
+<meta name="title" content="Bibi Paint">
+<meta name="description" content="">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bibieternal.ml/paint.html">
+<meta property="og:title" content="Bibi Paint">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://bibieternal.ml/paintog.jpeg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://bibieternal.ml/paint.html">
+<meta property="twitter:title" content="Bibi Paint">
+<meta property="twitter:description" content="">
+<meta property="twitter:image" content="https://bibieternal.ml/paintog.jpeg">
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "DotGothic16", sans-serif;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background: radial-gradient(circle, rgba(18, 18, 18, 0.8), rgba(0, 0, 0, 0.8)),
+    url("https://68.media.tumblr.com/595a5fa01fe53ca0e4ca8f37bacc849d/tumblr_nve67mJtue1tanofjo1_500.gif");
+  background-size: cover;
+}
+p {
+  color: white;
+  position: fixed;
+  font-size: 8vh;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 2;
+}
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.color-selector {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.2em;
+  z-index: 2;
+}
+[type="radio"] {
+  display: none;
+}
+[type="radio"]:checked + label:before {
+  box-shadow: 0px 0px 0px 2px #f9f9f9, 0 0 0 4px #cacaca;
+}
+label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0.7em 0px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.7em;
+}
+label:before {
+  display: inline-block;
+  content: "";
+  background: var(--c-bg);
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  margin-right: 0.3em;
+}
+label[for="selectcolor"] {
+  --c-bg: var(--selectcolor);
+}
+label[for="random"] {
+  --c-bg: var(--random);
+}
+label[for="clear"] {
+  --c-bg: var(--clear);
+}
+input[type="color"] {
+  width: 2.5em;
+  height: 2.5em;
+  border: none;
+  opacity: 0;
+}
+label[for="selectcolor"]:after {
+  position: absolute;
+  bottom: 0.4em;
+  right: 0.1em;
+  content: "";
+  width: 2em;
+  height: 2em;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(https://happy358.github.io/Images/Icon/color_circle.png);
+}
+</style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="container"></div>
+<p id="msg_start">Click me</p>
+
+<div class="color-selector">
+  <input type="radio" id="random" name="colors" checked />
+  <label for="random" title="Random Color" /></label>
+  <input type="radio" id="selectcolor" name="colors" />
+  <label for="selectcolor" title="Color Select" /><input type="color" id="colorpicker" name="colorpicker" /></label>
+  <input type="radio" id="clear" name="colors" />
+  <label for="clear" title="Clear" /></label>
+
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.6.3/dist/es-module-shims.js" crossorigin="anonymous"></script>
+  <script type="importmap">
+    {
+    "imports": {
+      "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/"
+    }
+  }
+</script>
+<!-- partial -->
+  <script>function e(e, t) {
+    if (void 0 !== f)
+      if (
+        ((y.x = (e / window.innerWidth) * 2 - 1),
+        (y.y = (-t / window.innerHeight) * 2 + 1),
+        w.setFromCamera(y, d),
+        w.intersectObject(f, !1, H),
+        H.length > 0)
+      ) {
+        const e = H[0].point;
+        h.point.copy(e), b.position.copy(e);
+        const t = H[0].face.normal.clone();
+        t.transformDirection(f.matrixWorld),
+          t.multiplyScalar(10),
+          t.add(H[0].point),
+          h.normal.copy(H[0].face.normal),
+          b.lookAt(t);
+        const n = E.geometry.attributes.position;
+        n.setXYZ(0, e.x, e.y, e.z),
+          n.setXYZ(1, t.x, t.y, t.z),
+          (n.needsUpdate = !0),
+          (h.intersects = !0),
+          (H.length = 0);
+      } else h.intersects = !1;
+  }
+
+  function t() {
+    window.addEventListener(
+      "pointerdown",
+      function () {
+        document.getElementById("msg_start").style.display = "none";
+      },
+      {
+        once: !0
+      }
+    ),
+      x.copy(h.point),
+      L.copy(b.rotation),
+      k.rotate && (L.z = 2 * Math.random() * Math.PI);
+    const e = k.minScale + Math.random() * (k.maxScale - k.minScale);
+    v.set(e, e, e);
+    const t = S.clone();
+    "random" == p
+      ? t.color.setHSL(
+          Math.abs(THREE.MathUtils.randInt(0, 1e3) / 1e3),
+          1,
+          THREE.MathUtils.randInt(550, 700) / 1e3
+        )
+      : t.color.set(p);
+    const n = new THREE.Mesh(new c(f, x, L, v), t);
+    M.push(n), l.add(n), (h.intersects = !0);
+  }
+
+  function n() {
+    M.forEach(function (e) {
+      l.remove(e);
+    }),
+      (M.length = 0);
+  }
+
+  function o() {
+    (d.aspect = window.innerWidth / window.innerHeight),
+      d.updateProjectionMatrix(),
+      s.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  import * as THREE from "three";
+
+  import { OrbitControls as r } from "three/addons/controls/OrbitControls.js";
+
+  import { GLTFLoader as i } from "three/addons/loaders/GLTFLoader.js";
+
+  import { DecalGeometry as c } from "three/addons/geometries/DecalGeometry.js";
+
+  const a = document.getElementById("container");
+
+  let s,
+    l,
+    d,
+    m,
+    f,
+    w,
+    E,
+    u,
+    p = "random";
+
+  const h = {
+      intersects: !1,
+      point: new THREE.Vector3(),
+      normal: new THREE.Vector3()
+    },
+    y = new THREE.Vector2(),
+    H = [],
+    g = new THREE.TextureLoader(),
+    R = g.load("https://threejs.org/examples/textures/decal/decal-diffuse.png"),
+    T = g.load("https://threejs.org/examples/textures/decal/decal-normal.jpg"),
+    S = new THREE.MeshPhongMaterial({
+      specular: 4473924,
+      map: R,
+      normalMap: T,
+      normalScale: new THREE.Vector2(1, 1),
+      shininess: 30,
+      transparent: !0,
+      depthTest: !0,
+      depthWrite: !1,
+      polygonOffset: !0,
+      polygonOffsetFactor: -4,
+      wireframe: !1
+    }),
+    M = [];
+
+  let b;
+
+  const x = new THREE.Vector3(),
+    L = new THREE.Euler(),
+    v = new THREE.Vector3(10, 10, 10),
+    k = {
+      minScale: 10,
+      maxScale: 20,
+      rotate: !0,
+      clear: function () {
+        n();
+      }
+    };
+
+  !(function () {
+    (s = new THREE.WebGLRenderer({
+      antialias: !0,
+      alpha: !0
+    })).setPixelRatio(window.devicePixelRatio),
+      s.setSize(window.innerWidth, window.innerHeight),
+      a.appendChild(s.domElement),
+      (l = new THREE.Scene()),
+      ((d = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        1,
+        1e3
+      )).position.y = 50),
+      (d.position.z = 120),
+      ((m = new r(d, s.domElement)).minDistance = 50),
+      (m.maxDistance = 200),
+      (m.enableDamping = !0),
+      (m.enablePan = !1),
+      l.add(new THREE.AmbientLight(4469555));
+    const n = new THREE.DirectionalLight(16768460, 0.8);
+    n.position.set(10, 10, 30), l.add(n);
+    const c = new THREE.DirectionalLight(13421823, 0.8);
+    c.position.set(-10, 10, -30), l.add(c);
+    const p = new THREE.BufferGeometry();
+    p.setFromPoints([new THREE.Vector3(), new THREE.Vector3()]),
+      (E = new THREE.Line(p, new THREE.LineBasicMaterial())),
+      ((u = new i()).crossOrigin = ""),
+      u.setPath("https://bibieternal.ml/"),
+      u.load("bibush.glb", function (n) {
+        ((f = n.scene.children[0]).material = new THREE.MeshPhongMaterial({
+          color: 0xcd7f32,
+          reflectivity: 0.8,
+          roughness: 0,
+          specular: 4473924
+        })),
+          f.scale.set(38, 38, 38),
+          l.add(f),
+          setTimeout(() => {
+            e(window.innerWidth / 2, window.innerHeight / 2),
+              t(),
+              e((window.innerWidth / 2) * 1.15, (window.innerHeight / 2) * 1.2),
+              t();
+          }, 1e3);
+      }),
+      (w = new THREE.Raycaster()),
+      ((b = new THREE.Mesh(
+        new THREE.BoxGeometry(1, 1, 10),
+        new THREE.MeshNormalMaterial()
+      )).visible = !1),
+      l.add(b),
+      window.addEventListener("resize", o),
+      window.addEventListener("pointerdown", function (n) {
+        e(n.clientX, n.clientY), h.intersects && t();
+      });
+  })(),
+    (function e() {
+      requestAnimationFrame(e), m.update(), s.render(l, d);
+    })(),
+    (function () {
+      "use strict";
+      function e(e) {
+        "selectcolor" == e
+          ? (p = document.querySelector("#colorpicker").value)
+          : "clear" == e
+          ? (window.confirm("Are you sure you want to clear all?") && n(),
+            (document.querySelector("#random").checked = !0),
+            (p = "random"))
+          : (p = e);
+      }
+      const t = {
+        selectcolor: "#ff3399",
+        random:
+          "linear-gradient(135deg,#ff7fbf 14%,#ffbf7f 28%,#ffff7f 42%,#bfff7f 56%,#7fffff 70%,#bf7fff 84%,#ff9eff)",
+        clear: "radial-gradient( #FFF,#FFF , #000)"
+      };
+      document.querySelector("#colorpicker").addEventListener("change", (e) => {
+        let t = e.target.value;
+        document
+          .querySelector("label[for='selectcolor']")
+          .style.setProperty("--selectcolor", t),
+          (p = t);
+      }),
+        document
+          .querySelector("#colorpicker")
+          .addEventListener("click", function () {
+            (document.querySelector("#selectcolor").checked = !0),
+              (p = document.querySelector("#colorpicker").value);
+          }),
+        (function () {
+          const e = document.querySelector(".color-selector");
+          Object.keys(t).map((n) => {
+            e.style.setProperty(`--${n}`, t[n]);
+          }),
+            (document.querySelector("#colorpicker").value = t.selectcolor);
+        })(),
+        (function () {
+          let t = document.querySelectorAll("input[type='radio'][name='colors']");
+          for (let n of t)
+            n.addEventListener("click", () => {
+              e(`${n.id}`);
+            });
+        })();
+    })();</script>
+
+</body>
+</html>
